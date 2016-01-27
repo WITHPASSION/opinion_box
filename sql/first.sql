@@ -2,7 +2,7 @@ CREATE DATABASE opinion_box;
 
 use opinion_box;
 
---　質問テーブル --
+-- 質問テーブル --
 CREATE TABLE questions (
 id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 question_name varchar(30) NOT NULL COMMENT 'アンケート名',
