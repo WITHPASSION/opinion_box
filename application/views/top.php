@@ -31,7 +31,6 @@
 			<td class = "text-center">sample4</td>
 		</tr>
 	</table>
-	<tr>
 		<div class = "text-right">
 		<td>
 			<input type = "button" class = "btn-primary"value =  "アンケート作成">
