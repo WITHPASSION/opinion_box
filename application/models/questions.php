@@ -9,7 +9,6 @@ class Questions extends CI_Model
 	function get_questionsAll()
 	{
 			$this->load->database();
-			$this->db->select(question_name,quetion_content);
 			$query = $this->db->get('questions')
 			return $query->result();
 }
