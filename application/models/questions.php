@@ -11,7 +11,7 @@ class Questions extends CI_Model
 			$this->load->database();
 			$this->db->select(question_name,quetion_content);
 			$query = $this->db->get('questions')
-			return $query;
+			return $query->result();
 }
 	function insert_auestions()
 	{
