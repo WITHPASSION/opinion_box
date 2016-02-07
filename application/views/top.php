@@ -10,7 +10,8 @@
 </head>
 <body>
 	<div class = "container-fluid">
-	<div class = "col-xs-6 col-xs-offset-3"> 
+	<div class = "col-xs-6 col-xs-offset-3">
+	<h3>top画面</h3> 
 	<table class = "table table-bordered table-hover">
 		<thead>
 			<tr>
@@ -18,22 +19,16 @@
 			</tr>
 		</thead>
 		<tbody>
+		<?php foreach ($questions as $question){ ?>
 		<tr>
-			<td class = "text-center">sample1</td>
+			<td class = "text-center"><?= $question->question_name ?> </td>
 		</tr>
-		<tr>
-			<td class = "text-center" >sample2</td>
-		</tr>
-		<tr>
-			<td class = "text-center">sample3</td>
-		</tr>
-		<tr>
-			<td class = "text-center">sample4</td>
-		</tr>
+		<?php } ?>
+		</tbody>
 	</table>
 		<div class = "text-right">
 		<td>
-			<input type = "button" class = "btn-primary"value =  "アンケート作成">
+			<input type = "button" class = "btn-primary" value =  "アンケート作成" onclick = "location.href = 'index.php/Question'">
 		</td>
 		</div>
 	</tr>
