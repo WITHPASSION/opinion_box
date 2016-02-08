@@ -21,7 +21,8 @@
 		<tbody>
 		<?php foreach ($questions as $question){ ?>
 		<tr>
-			<td class = "text-center"><?= $question->question_name ?> </td>
+			<td class = "text-center">
+			<a href = "/index.php/Choice/index/<?= $question->id ?>"><?= $question->question_name ?></a> </td>
 		</tr>
 		<?php } ?>
 		</tbody>
