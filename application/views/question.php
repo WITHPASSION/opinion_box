@@ -12,15 +12,8 @@
 	<script src = "/assets/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<!--入力項目追加 javascript-->
-	<script>
-	$('#btnadd').click(function(){
-			$('#oderlist').append('<div class = "col-xs-4"><input type = "text" class = "form-control" name ="choice" placeholder = "選択肢"/></div>' );
-	});
-	</script>
 
-
-	<form class = "form-horizontal" role =  method = "post" >
+	<form id ="new_question_form"class = "form-horizontal" action = "Question_controller/create"  method = "post">
 		<div class = "col-xs-offset-3">
 			<h3>アンケート作成画面</h3>
 
@@ -36,25 +29,37 @@
 					<textarea class = "form-control" rows = "4" name = "question_content" placeholder = "アンケート内容"></textarea>
 				</div>
 			</div>
-			<div class = "form-group">
+			<div  class = "form-group">
 				<label for = "choice" class = "col-sm-2 control-label">選択肢</label>
-				<div id = "oderlist" class = "col-xs-4">
-					<input type = "text" class = "form-control"  name = "choice" placeholder = "選択肢">
+				<div id = "textadd" class = "col-xs-4">
+					<input type = "text"  class = "form-control"  name = "choice[]" placeholder = "選択肢">
 				</div>
 			</div>
 		</div>
 		<br>
 		<div class ="form-group">
 			<div class = "col-sm-offset-6 col-xs-10">
-				<input type = "button" id = "btnadd" class = "btn btn-primary" value = "選択肢追加">
+				<input id = "btnadd" type ="button" class = "btn btn-xs  btn-primary" value = "選択肢追加">
+				<input id = "btn"type = "button" class = "btn btn-xs  btn-primary" value = "選択肢消去">
 			</div>
 		</div>
+
+		<!--textbox自動追加js-->
+		<script>
+			$("#btnadd").on("click",function(){
+				$("#textadd").append('<input type = "text" class = "form-control" name ="choice[]" placeholder = "選択肢"/>' );
+			});
+			$("#btn").on("click", function(){
+					$("#textadd input:last-child").remove();
+					});
+	</script>
+
 		<br>
 		<div class = "form-inline">
 				<input type="button" class="btn btn-defult col-xs-offset-4 col-xs-1" value = "戻る" onclick = "history.back()">
-				<input type="button" class="btn btn-defalut col-xs-offset-1 col-xs-1" data-toggle = "modal" data-target = "#modal-confrim" value = "確認">
+				<input type="submit" id = "confrim"class="btn btn-defalut col-xs-offset-1 col-xs-1" data-toggle = "modal" data-target = "#modal-confrim" value = "確認">
 		</div>
-				<div class="modal fade" id="modal-confrim" tabindex = "-1">
+				<!--<div class="modal fade" id="modal-confrim" tabindex = "-1">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -64,7 +69,7 @@
 								<h4 class="modal-title">入力確認</h4>
 							</div>
 							<div class="modal-body">
-							<table id = "questionConfrim" class = "table table-hover">
+							<table id = "question_confrim" class = "table table-hover">
 							<tbody>
 								<tr><td>アンケート名</td><td name = "question_name"></td></tr>
 								<tr><td>アンケート内容</td><td name = "question_content"></td></tr>
@@ -79,7 +84,17 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>-->
+
+				<script>
+					$('#confrim').on('click', function(){
+						$('#question_confrim[name=question_name]') $('#new_question_form [name=question_name]').val();
+						//alert(a);
+					})
+
+
+
+				</script>
 		</div>
 	</form>
 </body>

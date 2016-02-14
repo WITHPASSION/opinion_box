@@ -2,29 +2,19 @@
 class Question_controller extends CI_Controller{
 		public function index(){
 				$this->load->view('question');
+		}
 
-				$data = array(
+		function create()
+		{
+			$question = array(
 				'question_name' => $this->input->post('question_name'),
 				'question_content' => $this->input->post('question_content')
 			);
-
-			//$this->load->model('Question', $data);
-			var_dump($data);
+			 	$choices = $this->input->post('choice');
+				$this->load->model('Question_model');
+				$this->Question_model->insert_question($question, $choices);
 		}
 
-		//function edit()
-		//{
-
-				//$data = array(
-				//'question_name' => $this->input->post('question_name'),
-				//'question_content' => $this->input->post('question_content')
-			//);
-			//var_dump($data);
-			//$this->load->view('question');
-			//$this->load->model('Question', $data);
-			//$this->Question->insert_question($data);	
-			
-		//}
 }
 
 
