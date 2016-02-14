@@ -13,6 +13,8 @@ class Question_controller extends CI_Controller{
 			 	$choices = $this->input->post('choice');
 				$this->load->model('Question_model');
 				$this->Question_model->insert_question($question, $choices);
+				$this->load->helper('url');
+				redirect('/');
 		}
 
 }
