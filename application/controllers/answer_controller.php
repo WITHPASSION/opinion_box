@@ -8,7 +8,19 @@ class Answer_controller extends CI_Controller{
 				$query = new Choice_model();
 				$data['choices'] = $query->get_choices($id);
 				$this->load->view('choice', $data);
-
 		}
+		function create()
+		{
+				$answer = array(
+					'choice_id' => $this->input->post('choice_id'),
+					'question_id' =>$this->input->post('question_id')
+					 );
+				$this->load->model('Answer_model');
+				$this->Answer_model->insert_answer($answer);
+				$this->load->helper('url');
+				redirect('/');
+				
+		}
+
 }
 

@@ -10,6 +10,7 @@
 	<title>アンケート回答画面</title>
 </head>
 	<body>
+	<form id = "answer_form" method = "post" action = "/Answer_controller/create">
 		<div class = "text-center">
 			<?= $question->question_name ?>
 			<br>
@@ -17,16 +18,18 @@
 			<?= $question->question_content ?>
 			<br>
 			<br>
-			<?php foreach ($choices as $choice){ ?>
+			<?php foreach ($choices as $choice){ ?>			
 				<?= $choice->choice ?>
-				<input type = "radio" name = "choice">
+				<input type = "radio" name = "choice_id" value = <?=  $choice->id ?>>
 				<br>
 				<br>
 			<?php } ?>
+			<input type = "hidden" name = "question_id" value = <?= $choice->question_id?>>
 		</div>
 		<div class = "center-block">
 				<input type = "button" class = "btn btn-defult col-xs-offset-4 col-xs-1" value = "戻る">
-				<button type = "button" class = "btn btn-dfult col-sm-offset-1 col-xs-1" data-toggle="modal" data-target="#modal-confirm">回答</button>
+				<input type = "submit" class = "btn btn-dfult col-sm-offset-1 col-xs-1" data-toggle="modal" data-target="#modal-confirm" value = "回答">
 		</div>
+		</form>
 	</body>
 </html> 
