@@ -1,10 +1,11 @@
 <?php
 class Question_controller extends CI_Controller{
-		public function index(){
+		public function index()
+		{
 				$this->load->view('question');
 		}
 
-		function create()
+		public	function create()
 		{
 			$question = array(
 				'question_name' => $this->input->post('question_name'),

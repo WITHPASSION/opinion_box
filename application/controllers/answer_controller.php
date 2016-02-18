@@ -1,6 +1,7 @@
 <?php
 class Answer_controller extends CI_Controller{
-		public function index($id){
+		public function index($id)
+		{
 				$this->load->model('Question_model');
 				$this->load->model('Choice_model');
 				$query = new Question_model();
@@ -9,7 +10,7 @@ class Answer_controller extends CI_Controller{
 				$data['choices'] = $query->get_choices($id);
 				$this->load->view('choice', $data);
 		}
-		function create()
+		public	function create()
 		{
 				$answer = array(
 					'choice_id' => $this->input->post('choice_id'),
@@ -19,7 +20,6 @@ class Answer_controller extends CI_Controller{
 				$this->Answer_model->insert_answer($answer);
 				$this->load->helper('url');
 				redirect('/');
-				
 		}
 
 }
