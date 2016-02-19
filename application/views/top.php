@@ -22,7 +22,10 @@
 					<?php foreach ($questions as $question){ ?>
 						<tr>
 							<td class="text-center">
-								<a href="/answer/<?= $question->id ?>"><?= $question->question_name ?></a> 
+								<a href="/answer/<?= $question->id ?>"><?= $question->question_name ?></a>
+							<span class="text-left">
+								<a href="/total/<?= $question->id ?>" class="btn btn-primary" >集計</a>
+							</span>
 							</td>
 						</tr>
 					<?php } ?>
