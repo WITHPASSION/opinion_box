@@ -27,6 +27,7 @@ class Choice_model  extends CI_Model
 	function get_choices($id)
 	{
 		$this->load->database();
+		$this->db->order_by('choice_number', 'asc');
 		$data = $this->db->get_where('choices', array('question_id'=>$id));
 		return $data->result();
 	}
