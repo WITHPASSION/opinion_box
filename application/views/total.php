@@ -18,7 +18,7 @@
 			<?= $question->question_content ?>
 			<br>
 			<br>
-			<?php foreach ($results as $result){ ?>			
+			<?php foreach ($results as $result){ ?>
 				<?= $result->choice ?>
 				<?= $result->count ?>
 				<br>

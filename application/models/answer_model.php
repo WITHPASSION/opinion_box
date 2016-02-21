@@ -22,10 +22,11 @@ class Answer_model extends CI_Model
 	function total($id)
 	{
 		$this->load->database();
-		$this->db->select('choice, COUNT(answers.id) as count');
-		$this->db->join('answers', 'choices.id=answers.choice_id', 'left');
+		$this->db->select('choice,CASE WHEN answers.id IS NULL THEN 0  ELSE COUNT(answers.id) END as count');
+		$this->db->join('answers', 'choices.id=answers.choice_id', 'left outer');
 		$this->db->where('choices.question_id', $id);
-		$this->db->group_by('choice_id');
+		$this->db->group_by('choice');
+		$this->db->order_by('choice_number','asc');
 		$query = $this->db->get('choices');
 		return $query->result();
 
