@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<?php
-	defined('BASEPATH') OR exit('NO direct script access allowe')
-?>
-
 <html lang="ja">
 <head>
 	<meta charset="utf-8">
@@ -18,7 +13,7 @@
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label"> アンケート名</label>
 				<div class="col-xs-4">
-					<input type="text" class="form-control"name="question_name"  placeholder="アンケート名">	
+					<input type="text" class="form-control"name="question_name"  placeholder="アンケート名" pattern=".{3,10}" title= "3文字以上、10文字以内で入力してください。">
 				</div>
 			</div>
 			<div class="form-group">
@@ -45,10 +40,11 @@
 		<script>
 			$("#btnadd").on("click",function(){
 				$("#textadd").append('<input type = "text" class = "form-control" name ="choice[]" placeholder = "選択肢"/>' );
-				$('#question_confrim').append('<tr><td>選択肢</td><td name = "choice[]"></td></tr>');
+				$('#question_confrim').append('<tr><td>選択肢</td><td name = "choice_confirm"></td></tr>');
 			});
 			$("#btn").on("click", function(){
 					$("#textadd input:last-child").remove();
+					$('#question_confrim [name=choice_confirm]').remove();
 					});
 		</script>
 		<br>
@@ -70,7 +66,7 @@
 							<tbody>
 								<tr><td>アンケート名</td><td name="question_name"></td></tr>
 								<tr><td>アンケート内容</td><td name="question_content"></td></tr>
-								<tr><td>選択肢</td><td name="choice[]"></td></tr>
+								<tr><td>選択肢</td><td name="choice_confirm"></td></tr>
 							</tbody>
 							</table>								
 							</div>
@@ -82,10 +78,14 @@
 					</div>
 				</div>
 				<script>
+				</script>
+				<script>
 					$('#confrim').on('click', function(){
 						$('#question_confrim [name=question_name]').text($('#new_question_form [name=question_name]').val());
-						$('#question_confrim [name = question_content]').text($('#new_question_form [name = question_content]').val());
-						$('#question_confrim [name = choice[]]').text($('#new_question_form [name = choice[]]').val());
+						$('#question_confrim [name=question_content]').text($('#new_question_form [name = question_content]').val());
+						for(var i=0; i<$('#new_question_form [name="choice[]"]').length; i++){
+						 $('#question_confrim [name=choice_confirm]')[i].innerHTML=($('#new_question_form [name = "choice[]"]')[i].value);	
+						}
 					});
 				</script>
 		</div>
